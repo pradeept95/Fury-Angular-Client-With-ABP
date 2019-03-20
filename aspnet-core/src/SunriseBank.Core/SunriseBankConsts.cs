@@ -2,7 +2,7 @@
 {
     public class SunriseBankConsts
     {
-        public const string LocalizationSourceName = "SunriseBank";
+        public const string LocalizationSourceName = "Application";
 
         public const string ConnectionStringName = "Default";
 
