@@ -1,0 +1,52 @@
+@import "var";
+
+.mat-drawer-container.layout-container {
+  height: 100%;
+  background-color: $theme-background;
+}
+
+.content-container {
+  height: 100%;
+}
+
+.main-container {
+  position: relative;
+  flex: 1;
+}
+
+.mat-drawer-content.drawer-content {
+  overflow: hidden;
+}
+
+.wrapper {
+  height: 100%;
+  max-width: 100%;
+}
+
+.sidenav {
+  &.collapsed, &.collapsedHover {
+    & + .content-wrapper {
+      margin-left: $sidenav-collapsed-width;
+      max-width: calc(100% - #{$sidenav-collapsed-width});
+    }
+  }
+
+  &.expanded {
+    & + .content-wrapper {
+      max-width: calc(100% - #{$sidenav-width});
+    }
+  }
+
+  &.mobile, &.mobileOpen {
+    & + .content-wrapper {
+      max-width: 100%;
+    }
+  }
+}
+
+.disable-simplebar[data-simplebar] {
+
+  > .simplebar-scroll-content > .simplebar-content {
+    height: 100%;
+  }
+}

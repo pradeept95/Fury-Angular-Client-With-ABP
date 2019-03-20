@@ -1,0 +1,39 @@
+@import "var";
+
+.breadcrumbs {
+  margin-bottom: $spacing;
+
+  .title {
+    @include mat-typography-level-to-styles($config, title);
+    font-weight: 400;
+  }
+
+  .crumb, .link {
+    color: $theme-secondary-text;
+    text-decoration: none;
+    transition: color $swift-ease-out-duration $swift-ease-out-timing-function;
+
+    @include mat-typography-level-to-styles($config, body-2);
+
+
+    &:hover {
+      color: $theme-text;
+    }
+  }
+
+  .link {
+    cursor: pointer;
+  }
+
+  .chevron {
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+    margin-left: $spacing/4;
+    margin-right: $spacing/4;
+  }
+
+  .crumb.current, .crumb.current .link {
+    color: $theme-text;
+  }
+}

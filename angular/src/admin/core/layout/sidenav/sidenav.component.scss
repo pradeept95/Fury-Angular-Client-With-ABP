@@ -1,0 +1,71 @@
+@import "var";
+
+:host {
+  display: flex;
+}
+
+.sidenav {
+  width: $sidenav-width;
+  max-width: $sidenav-width;
+  background: $sidenav-background;
+  z-index: $sidenav-z-index;
+  height: 100%;
+
+  .toolbar {
+    background: $sidenav-toolbar-background;
+    padding: 0 $spacing/1.333 0 $spacing + $sidenav-item-active-border-width;
+    height: $sidenav-toolbar-height;
+    min-height: $sidenav-toolbar-height;
+    max-height: $sidenav-toolbar-height;
+    overflow: hidden;
+    margin-bottom: $spacing/3;
+
+    .logo {
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  .collapse-toggle {
+    color: $sidenav-color;
+    transition: transform .25s;
+
+    .icon {
+      width: 12px;
+      height: 12px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+    &.rotate {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .sidenav-items {
+    @include mat-elevation(4);
+    @include mat-elevation-transition();
+  }
+
+  @keyframes fadeout {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .logo, .collapse-toggle {
+    will-change: opacity;
+  }
+
+  &.collapsed {
+    .logo, .collapse-toggle {
+      animation-name: fadeout;
+      animation-duration: 300ms;
+      animation-direction: normal;
+      animation-timing-function: cubic-bezier(.25, .8, .25, 1);
+    }
+  }
+}

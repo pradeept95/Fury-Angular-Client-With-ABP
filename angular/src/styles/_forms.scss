@@ -1,0 +1,21 @@
+
+[fxLayout] > .mat-form-field {
+  margin-bottom: 4px;
+
+  .mat-form-field-infix {
+    width: 0;
+  }
+}
+
+.mat-dialog-content [fxLayout] > .mat-form-field {
+  .mat-form-field-infix {
+    width: 180px;
+  }
+}
+
+.fury-form-field {
+
+  &.fury-form-field-remove-hint-bar {
+    margin-bottom: -1.34375em;
+  }
+}

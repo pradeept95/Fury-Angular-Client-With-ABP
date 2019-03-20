@@ -1,0 +1,22 @@
+@import "var";
+
+.footer {
+  height: $footer-height;
+  position: relative;
+  z-index: $footer-z-index;
+  background: $footer-background;
+  color: $theme-secondary-text;
+  padding-left: $spacing;
+  padding-right: $spacing;
+  border-top: 1px solid $theme-divider;
+
+  @include mat-elevation($footer-elevation);
+
+  .action {
+    .icon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+    }
+  }
+}

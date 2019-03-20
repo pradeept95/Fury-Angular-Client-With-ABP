@@ -1,0 +1,49 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="title">Preview</div>
+    <div class="preview-content" fxLayout="row">
+      <mat-form-field fxFlex="280px">
+        <mat-label>Select a State</mat-label>
+        <input matInput [matAutocomplete]="auto" [formControl]="stateCtrl">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+            <img style="vertical-align:middle; margin-right: 4px;" src="{{ state.flag }}" height="16"/>
+            <span>{{ state.name }}</span> |
+            <small>Population: {{ state.population }}</small>
+          </mat-option>
+        </mat-autocomplete>
+        <button *ngIf="stateCtrl.value" type="button" mat-icon-button (click)="stateCtrl.reset()" matSuffix>
+          <mat-icon>close</mat-icon>
+        </button>
+        <button *ngIf="!stateCtrl.value" type="button" mat-icon-button matSuffix>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-hint>Add this hint for a better UX!</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Autocomplete</div>
+      <div class="tag">&lt;mat-autocomplete&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          Input text can be used with autocomplete to help users who have limited literacy or who write in a foreign
+          language.
+          <br>
+          <br>For example, autocomplete can:
+          <br>Suggest input as it’s typed (refreshing suggestions with each keystroke)
+          <br>Fill a field with default input text
+          <br>Pressing the return button accepts the current autocomplete suggestion.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="autocompleteHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

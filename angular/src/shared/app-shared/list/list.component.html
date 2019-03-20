@@ -1,0 +1,31 @@
+<div class="fury-list-table">
+  <div class="fury-list-header"
+       *ngIf="!hideHeader"
+       fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayoutGap="8px"
+       fxLayoutGap.gt-xs="24px">
+    <div class="fury-list-name">{{ name }}</div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
+      <mat-icon class="fury-filter-input-icon">search</mat-icon>
+      <input fxFlex class="fury-filter-input" #filter placeholder="Search&hellip;">
+    </div>
+
+    <button class="fury-column-filter" type="button" mat-icon-button [matMenuTriggerFor]="columnFilter">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <ng-content select=".actions"></ng-content>
+  </div>
+
+  <mat-menu #columnFilter="matMenu" yPosition="below" xPosition="before">
+    <button class="checkbox-item mat-menu-item" *ngFor="let column of columns"
+            (click)="toggleColumnVisibility(column, $event)">
+      <mat-checkbox [(ngModel)]="column.visible" class="checkbox" #checkbox (click)="$event.stopPropagation()">
+        {{ column.name }}
+      </mat-checkbox>
+    </button>
+  </mat-menu>
+
+  <ng-content></ng-content>
+</div>

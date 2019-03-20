@@ -1,0 +1,24 @@
+@import "var";
+
+:host {
+  z-index: $toolbar-z-index;
+}
+
+.toolbar {
+  background: $toolbar-background;
+  padding-right: 0;
+  height: $toolbar-height;
+  padding-left: $spacing;
+  max-width: 100%;
+
+  @include mat-elevation($toolbar-elevation);
+
+  .button {
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+  }
+
+  @include media-xs {
+    padding-left: $spacing/3;
+  }
+}

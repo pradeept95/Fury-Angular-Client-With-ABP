@@ -1,0 +1,132 @@
+@import "var";
+
+.fury-list-table {
+  display: flex;
+  flex-direction: column;
+
+  .fury-list-header {
+    background: white;
+    padding-left: $spacing;
+    padding-right: $spacing;
+    border-bottom: 1px solid $theme-divider;
+    height: 60px;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+
+    @include media-xs {
+      height: auto;
+      padding-top: $spacing;
+      padding-bottom: $spacing;
+    }
+
+    .fury-list-name {
+      color: $color;
+      border-right: 1px solid $theme-divider;
+      font-size: 20px;
+      line-height: 32px;
+      font-weight: 500;
+      padding-right: $spacing;
+
+      @include media-xs {
+        border-right: none;
+      }
+    }
+
+    .fury-filter-input {
+      font-size: 16px;
+      line-height: 1.125;
+      border: none;
+      height: 32px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .fury-filter-input-icon {
+      width: 1.2em;
+      color: $theme-icon;
+      vertical-align: bottom;
+      height: 22px;
+      font-size: 22px;
+      margin-right: $padding-xs;
+    }
+
+    .fury-column-filter {
+      color: $theme-icon;
+    }
+  }
+
+  .mat-header-row {
+    background: #F5F5F5;
+
+    .mat-header-cell .mat-sort-header-button {
+      text-transform: uppercase;
+    }
+  }
+
+  .mat-row {
+
+    &:hover {
+      background: rgba(black, 0.04);
+    }
+  }
+
+  .mat-cell.image-cell, .mat-header-cell.image-cell {
+    flex: 0;
+    min-width: 35px + $spacing;
+
+    img {
+      border-radius: 50%;
+      height: 35px;
+      width: 35px;
+      margin-right: $spacing;
+      vertical-align: middle;
+    }
+  }
+
+  .mat-cell.actions-cell, .mat-header-cell.actions-cell {
+    flex: 0;
+    min-width: 40px;
+    overflow: visible;
+
+    button {
+      color: $theme-icon;
+    }
+  }
+
+  .paginator {
+    display: block;
+    background: #F5F5F5;
+  }
+
+  /**
+    Responsive Table
+   */
+  .fury-mobile-label {
+    display: none;
+  }
+
+  @include media-xs {
+    .fury-mobile-label {
+      width: 80px;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .mat-header-row {
+      display: none;
+    }
+
+    .mat-row {
+      flex-direction: column;
+      align-items: start;
+      padding: $spacing/3 $spacing;
+      min-height: auto;
+    }
+
+    .mat-cell {
+      padding-top: $spacing/3;
+    }
+  }
+}

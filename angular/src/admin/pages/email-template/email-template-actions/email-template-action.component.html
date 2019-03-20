@@ -1,0 +1,112 @@
+<div class="padding">
+  <fury-breadcrumbs
+    class="capitalize"
+    [current]="mode"
+    [crumbs]="['Email & SMS Templates']"
+  ></fury-breadcrumbs>
+
+  <div fxLayout="column">
+    <div
+      fxFlex="noshrink"
+      fxLayout="column"
+      fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="start stretch"
+    >
+      <fury-card class="basic-forms route-animations-elements" fxFlex="grow">
+        <fury-card-header>
+          <fury-card-header-title class="capitalize">{{
+            mode
+          }}</fury-card-header-title>
+          <fury-card-header-sub-title
+            >Manage Email & SMS Template</fury-card-header-sub-title
+          >
+          <fury-card-header-actions>
+            <button
+              class="icon"
+              type="button"
+              mat-icon-button
+              matTooltip="Go Back"
+              (click)="goToTemplate()"
+            >
+              <mat-icon>reply_all</mat-icon>
+            </button>
+          </fury-card-header-actions>
+        </fury-card-header>
+        <fury-card-content fxLayout="column">
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="content" fxLayout="column" fxLayoutGap="8px">
+              <mat-form-field>
+                <mat-label>Template Key Name</mat-label>
+                <input
+                  matInput
+                  formControlName="keyName"
+                  required
+                  [disabled]="mode == 'edit'"
+                />
+                <mat-hint>Template Key is not editable.</mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Display Name</mat-label>
+                <input matInput formControlName="displayName" required />
+              </mat-form-field>
+
+              <!--
+                <mat-form-field fxFlex="grow">
+                  <mat-label>Template Content</mat-label>
+                  <input matInput formControlName="templateContent" />
+                  <mat-hint
+                    >Use '{yourVeriable}' inside the content to bind actual data
+                    on it.</mat-hint
+                  >
+                </mat-form-field>
+              -->
+              <div class="editor" fxLayout="column" fxLayoutAlign="start">
+                <h3>Template Content</h3>
+                <div
+                  class="editor-container mat-elevation-z16 route-animations-elements"
+                >
+                  <quill-editor
+                    [style]="{ height: '250px' }"
+                    formControlName="templateContent"
+                  ></quill-editor>
+                </div>
+              </div>
+
+              <div
+                class="actions"
+                fxLayout="row"
+                fxLayoutAlign="end center"
+                fxLayoutGap="8px"
+              >
+                <button
+                  mat-button
+                  type="button"
+                  (click)="form.reset()"
+                  [disabled]="form.pristine"
+                  color="primary"
+                >
+                  RESET
+                </button>
+                <button
+                  mat-raised-button
+                  type="submit"
+                  color="primary"
+                  [disabled]="form.invalid"
+                >
+                  SAVE
+                </button>
+              </div>
+            </div>
+          </form>
+        </fury-card-content>
+      </fury-card>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.83)"
+  size="large"
+  color="#280f27"
+  type="ball-clip-rotate-pulse"
+></ngx-spinner>

@@ -1,0 +1,53 @@
+<div class="padding" fxLayout="column">
+
+  <fury-breadcrumbs current="Simple Table" [crumbs]="['Tables']"></fury-breadcrumbs>
+
+  <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="24px">
+    <div fxFlex="noshrink" fxFlex.gt-md="300px" fxLayout="column">
+      <p class="margin-top-0">
+        Tables come in many styles and layouts, we made it simple for you to display a simple table and make it look
+        appealing.
+        <br>
+        <br>Simply add the classes below to the table and it will inherit the styles.
+      </p>
+      <mat-checkbox [(ngModel)]="tableHover">
+        .table-hover
+      </mat-checkbox>
+      <mat-checkbox [(ngModel)]="tableStriped">
+        .table-striped
+      </mat-checkbox>
+      <mat-checkbox [(ngModel)]="tableCondensed">
+        .table-condensed
+      </mat-checkbox>
+      <mat-checkbox [(ngModel)]="tableBordered">
+        .table-bordered
+      </mat-checkbox>
+    </div>
+
+    <div class="table-container route-animations-elements" furyScrollbar fxFlex="grow">
+      <table class="table" [class.table-hover]="tableHover" [class.table-striped]="tableStriped"
+             [class.table-condensed]="tableCondensed" [class.table-bordered]="tableBordered">
+        <thead>
+        <tr>
+          <th fxHide fxShow.gt-xs></th>
+          <th>NAME</th>
+          <th>COMPANY</th>
+          <th fxHide fxShow.gt-sm>MAIL</th>
+          <th>BALANCE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let row of rows">
+          <td class="avatar-cell" fxHide fxShow.gt-xs><img class="avatar" [src]="row.picture"></td>
+          <td>{{ row.name.first }} {{ row.name.last }}</td>
+          <td>{{ row.company }}</td>
+          <td fxHide fxShow.gt-sm>{{ row.email }}</td>
+          <td>{{ row.balance }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>

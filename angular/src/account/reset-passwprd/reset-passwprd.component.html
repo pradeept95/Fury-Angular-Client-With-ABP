@@ -1,0 +1,84 @@
+﻿<div class="page" fxLayout="column" fxLayoutAlign="center center">
+  <div class="card border-radius elevation" #cardBody>
+    <div class="header padding" fxLayout="column" fxLayoutAlign="center center">
+      <img src="/assets/img/icon.png" />
+    </div>
+    <ng-container *ngIf="!isPasswordChanged">
+      <form
+        class="padding"
+        fxLayout="column"
+        fxLayoutGap="16px"
+        [formGroup]="form"
+        (ngSubmit)="resetPassword()"
+      >
+        <div fxFlex="auto" fxLayout="column">
+          <h4 class="text-center">You can reset your password form here.</h4>
+          <mat-form-field fxFlex="grow">
+            <mat-label>New Password</mat-label>
+            <input
+              matInput
+              required
+              type="password"
+              formControlName="newPassword"
+            />
+            <mat-error *ngIf="form.get('newPassword').hasError('required')"
+              >Password is required</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field fxFlex="grow">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              matInput
+              required
+              type="password"
+              formControlName="confirmPassword"
+            />
+            <mat-error *ngIf="form.get('confirmPassword').hasError('required')"
+              >Confirm Password is required</mat-error
+            >
+            <mat-error *ngIf="passwordDoesnotMatch"
+              >Passwords don't match.</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <button type="submit" color="primary" mat-raised-button>
+          RESET PASSWORD
+        </button>
+        <p class="secondary-text text-center">
+          Did you know your credentials?<br />
+          <a [routerLink]="['/account/login']">Click here to login</a> OR
+        </p>
+        <p class="secondary-text text-center">
+          Don't have an account?<br />
+          <a [routerLink]="['/account/register']">Click here to create one</a>
+        </p>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="isPasswordChanged">
+      <div
+        class="padding"
+        fxLayout="column"
+        fxLayoutGap="16px"
+        [formGroup]="form"
+      >
+        <div fxFlex="auto" fxLayout="column">
+          <h4 class="text-center">{{ SuccessMessage }}</h4>
+          <button
+            type="button"
+            color="primary"
+            mat-raised-button
+            (click)="back()"
+          >
+            Go To Login
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.83)"
+  size="large"
+  color="#280f27"
+  type="ball-clip-rotate-pulse"
+></ngx-spinner>

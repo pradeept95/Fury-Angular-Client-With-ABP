@@ -1,0 +1,25 @@
+@import "var";
+
+.page {
+  display: block;
+  background: linear-gradient(135deg, $theme-background 22px, $theme-background-hover 22px, $theme-background-hover 24px, transparent 24px, transparent 67px, $theme-background-hover 67px, $theme-background-hover 69px, transparent 69px),
+  linear-gradient(225deg, $theme-background 22px, $theme-background-hover 22px, $theme-background-hover 24px, transparent 24px, transparent 67px, $theme-background-hover 67px, $theme-background-hover 69px, transparent 69px) 0 64px;
+  background-color: $theme-background;
+  background-size: 64px 128px;
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  width: 380px;
+
+  @include media-xs {
+    width: 300px;
+  }
+
+  .header {
+    background: $theme-color-primary;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+}

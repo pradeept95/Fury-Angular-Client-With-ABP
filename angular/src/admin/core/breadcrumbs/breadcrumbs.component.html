@@ -1,0 +1,14 @@
+<div class="breadcrumbs">
+  <div class="title">{{ current }}</div>
+  <div class="crumbs" fxLayout="row" fxLayoutAlign="start center">
+    <a class="crumb home" [routerLink]="['/']">Home</a>
+    <div class="crumb" *ngFor="let crumb of crumbs" fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon class="chevron">chevron_right</mat-icon>
+      <div class="link">{{ crumb }}</div>
+    </div>
+    <div class="crumb current" fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon class="chevron">chevron_right</mat-icon>
+      <div class="link">{{ current }}</div>
+    </div>
+  </div>
+</div>

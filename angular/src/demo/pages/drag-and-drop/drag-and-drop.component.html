@@ -1,0 +1,54 @@
+<div class="drag-and-drop" fxLayout="column" fxLayoutAlign="start center">
+
+  <h1>
+    <mat-icon class="middle">mouse</mat-icon>
+    Drag & Drop
+  </h1>
+
+  <div class="list-container route-animations-elements" fxFlex="1 0 auto" fxLayout="column"
+       fxLayoutAlign="start center">
+    <div class="mat-elevation-z4">
+      <mat-toolbar>Drag & Drop Anything!</mat-toolbar>
+      <mat-list [sortablejs]="listArray" [sortablejsOptions]="simpleOptions">
+        <mat-list-item class="draggable" *ngFor="let list of listArray">
+          <img mat-list-avatar [src]="list.image" alt="...">
+          <div class="body-1" matLine> {{ list.name }}</div>
+          <p matLine>
+            <span class="subheading-1"> {{ list.subject }} </span>
+            <span class="extra"> -- {{ list.content }} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+  <div class="list-container" fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start center"
+       fxLayoutAlign.gt-sm="center center" fxLayoutWrap="wrap">
+    <div class="list mat-elevation-z4 route-animations-elements">
+      <mat-toolbar>Group 1</mat-toolbar>
+      <mat-list [sortablejs]="listWithoutAvatarArray" [sortablejsOptions]="groupOptions">
+        <mat-list-item class="small-list-item" *ngFor="let list of listWithoutAvatarArray">
+          <h3 class="middle" matLine>
+            <mat-icon class="drag-handle">drag_handle</mat-icon>
+            {{ list.name }}
+          </h3>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <mat-icon class="left-right-compare">compare_arrows</mat-icon>
+
+    <div class="list mat-elevation-z4 route-animations-elements">
+      <mat-toolbar>Group 2</mat-toolbar>
+      <mat-list [sortablejs]="numberListArray" [sortablejsOptions]="groupOptions">
+        <mat-list-item class="small-list-item" *ngFor="let list of numberListArray">
+          <h3 class="middle" matLine>
+            <mat-icon class="drag-handle">drag_handle</mat-icon>
+            {{ list.name }}
+          </h3>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+</div>

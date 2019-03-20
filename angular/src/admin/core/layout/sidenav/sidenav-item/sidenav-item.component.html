@@ -1,0 +1,53 @@
+<ng-container *ngIf="showMenuItem(item)">
+  <div
+    class="subheading"
+    *ngIf="item.type === 'subheading'"
+    [class.collapsed]="isCollapsed$ | async"
+    [ngClass]="item.customClass"
+  >
+    {{ item.name }}
+  </div>
+
+  <a
+    *ngIf="item.type !== 'subheading'"
+    class="sidenav-item"
+    matRipple
+    [ngClass]="levelClass"
+    [class.collapsed]="isCollapsed$ | async"
+    [class.active]="isActive()"
+    (click)="handleClick()"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+  >
+    <mat-icon class="icon" *ngIf="level === 1">{{ item.icon }}</mat-icon>
+    <span class="name">{{ item.name }}</span>
+    <span fxFlex><!-- fill space --></span>
+    <span
+      class="badge"
+      *ngIf="item.badge"
+      [style.background-color]="item.badgeColor"
+      >{{ item.badge }}</span
+    >
+    <mat-icon
+      class="expand-indicator"
+      *ngIf="item.subItems && item.subItems.length > 0"
+      [class.rotate]="(dropdownState$ | async) === 'expanded'"
+    >
+      expand_more
+    </mat-icon>
+  </a>
+
+  <div
+    class="dropdown"
+    fxLayout="column"
+    [@dropdownState]="dropdownState$ | async"
+  >
+    <ng-container *ngFor="let subItem of item.subItems">
+      <fury-sidenav-item
+        [item]="subItem"
+        [level]="level + 1"
+        *ngIf="showMenuItem(subItem)"
+      ></fury-sidenav-item>
+    </ng-container>
+  </div>
+</ng-container>

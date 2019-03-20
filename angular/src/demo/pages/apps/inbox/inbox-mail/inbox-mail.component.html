@@ -1,0 +1,145 @@
+<div class="inbox-mail" fxLayout="column" fxFlex="grow">
+
+  <div class="header" fxFlex="none"
+       fxLayout="row" fxLayoutAlign="space-between center"
+       fxLayoutAlign.gt-xs="start center">
+    <button type="button" mat-icon-button [routerLink]="['../../']" matTooltip="Back to Inbox">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <div class="vertical-divider" fxHide fxShow.gt-xs></div>
+
+    <button type="button" fxHide fxShow.gt-xs mat-icon-button matTooltip="Archive">
+      <mat-icon>archive</mat-icon>
+    </button>
+
+    <button type="button" fxHide fxShow.gt-xs mat-icon-button matTooltip="Mark as Spam">
+      <mat-icon>backspace</mat-icon>
+    </button>
+
+    <button type="button" fxHide fxShow.gt-xs mat-icon-button (click)="removeMail()" matTooltip="Delete">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <div class="vertical-divider" [matMenuTriggerFor]="mailOptions" fxHide fxShow.gt-xs></div>
+
+    <fury-inbox-mail-label-list class="button" [availableLabels]="availableLabels"
+                                [labels]="(mail$ | async).labels"
+                                (addLabel)="addLabel($event)"
+                                (removeLabel)="removeLabel($event)"
+                                icon="folder"
+                                matTooltip="Move to"
+                                fxHide fxShow.gt-xs></fury-inbox-mail-label-list>
+
+    <fury-inbox-mail-label-list class="button" [availableLabels]="availableLabels"
+                                [labels]="(mail$ | async).labels"
+                                (addLabel)="addLabel($event)"
+                                (removeLabel)="removeLabel($event)"
+                                matTooltip="Labels"
+                                fxHide fxShow.gt-xs></fury-inbox-mail-label-list>
+
+    <div class="vertical-divider" fxHide fxShow.gt-xs></div>
+
+    <button type="button" mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+
+  <fury-scrollbar>
+    <div class="mail-content" fxLayout="column">
+      <div class="head" fxFlex="noshrink" fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <div class="subject">{{ (mail$ | async).subject }}</div>
+          <div class="labels" fxLayout="row" fxLayoutGap="8px">
+            <fury-inbox-mail-label *ngFor="let label of (mail$ | async).labels" [color]="label.color">
+              {{ label.name }}
+            </fury-inbox-mail-label>
+          </div>
+        </div>
+
+        <div class="actions" fxLayoutAlign="end center">
+          <fury-inbox-mail-star [isStarred]="(mail$ | async).starred"
+                                (starred)="toggleStarred()"></fury-inbox-mail-star>
+
+          <fury-inbox-mail-label-list [availableLabels]="availableLabels"
+                                      [labels]="(mail$ | async).labels"
+                                      (addLabel)="addLabel($event)"
+                                      (removeLabel)="removeLabel($event)"></fury-inbox-mail-label-list>
+        </div>
+      </div>
+
+      <div class="info" fxFlex="noshrink" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-xs="row"
+           fxLayoutAlign.gt-xs="space-between">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+          <img class="picture" src="http://i.pravatar.cc/35?u={{ (mail$ | async).from?.name }}">
+
+          <div fxLayout="column">
+            <div class="from">{{ (mail$ | async).from?.name }}</div>
+            <div class="to" fxLayout="row" fxLayoutAlign="start center">
+              to {{ (mail$ | async).to?.name }}
+              <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+          </div>
+        </div>
+
+        <div class="extra" fxFlexAlign.xs="end" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+          <div class="when">{{ (mail$ | async).when?.fromNow() }}</div>
+          <button class="options" [matMenuTriggerFor]="mailOptions" mat-icon-button>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="content" fxFlex="grow">
+        {{ (mail$ | async).content }}
+      </div>
+
+      <div class="reply" fxFlex="noshrink" fxLayout="row" fxLayoutAlign="space-between center" (click)="showReply()"
+           *ngIf="!replying">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+          <img class="avatar" src="assets/img/avatars/noavatar.png">
+          <div class="text">Click to <span class="semi-bold">Reply</span> or <span class="semi-bold">Forward</span>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+          <button type="button" mat-icon-button>
+            <mat-icon>reply</mat-icon>
+          </button>
+
+          <button type="button" mat-icon-button>
+            <mat-icon>forward</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="replying" *ngIf="replying">
+        <quill-editor class="editor" [style]="{ height: '100px' }"
+                      placeholder="Reply to {{ (mail$ | async).from?.name }}"></quill-editor>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+          <button mat-button (click)="hideReply()">CANCEL</button>
+          <button mat-fab color="primary" (click)="hideReply(true)">
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </fury-scrollbar>
+</div>
+
+<mat-menu #mailOptions="matMenu">
+  <button mat-menu-item>
+    <mat-icon>markunread_mailbox</mat-icon>
+    Mark as unread
+  </button>
+  <button mat-menu-item>
+    <mat-icon>label</mat-icon>
+    Labels
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    Delete
+  </button>
+</mat-menu>

@@ -1,0 +1,117 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="title">Preview</div>
+    <div class="preview-content" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px">
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="24px">
+        <div fxLayout="column" fxLayoutGap="8px">
+          <button mat-button>BUTTON</button>
+          <button mat-button color="primary">PRIMARY</button>
+          <button mat-button color="accent">ACCENT</button>
+          <button mat-button color="warn">WARN</button>
+          <button mat-button disabled>DISABLED</button>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="8px">
+          <button mat-raised-button>BUTTON</button>
+          <button mat-raised-button color="primary">PRIMARY</button>
+          <button mat-raised-button color="accent">ACCENT</button>
+          <button mat-raised-button color="warn">WARN</button>
+          <button mat-raised-button disabled>DISABLED</button>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="8px">
+        <button mat-icon-button color="primary">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button color="accent">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button color="warn">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button disabled>
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="8px">
+        <button mat-mini-fab color="primary">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-mini-fab disabled>
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="8px">
+        <button mat-fab color="primary">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-fab color="accent">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-fab color="warn">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-fab disabled>
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
+
+      <mat-button-toggle-group>
+        <mat-button-toggle value="left">
+          <mat-icon>format_align_left</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="center">
+          <mat-icon>format_align_center</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="right">
+          <mat-icon>format_align_right</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="justify" disabled>
+          <mat-icon>format_align_justify</mat-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Buttons</div>
+      <div class="tag">&lt;mat-button&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          Material buttons trigger an ink reaction on press. They may display text, imagery, or both. Flat buttons and
+          raised buttons are the most commonly used types.
+          <br>
+          <br><span class="semi-bold">Flat buttons:</span>
+          <br>Flat buttons are text-only buttons.
+          <br>They may be used in dialogs, toolbars, or inline.
+          <br>They do not lift, but fill with color on press.
+          <br>
+          <br><span class="semi-bold">Raised buttons:</span>
+          <br>Raised buttons are rectangular-shaped buttons.
+          <br>They may be used inline.
+          <br>They lift and display ink reactions on press.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="flatButtonsHTML"></code>
+        <code furyHighlight [innerHTML]="raisedButtonsHTML"></code>
+        <code furyHighlight [innerHTML]="iconButtonHTML"></code>
+        <code furyHighlight [innerHTML]="fabHTML"></code>
+        <code furyHighlight [innerHTML]="buttonToggleHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

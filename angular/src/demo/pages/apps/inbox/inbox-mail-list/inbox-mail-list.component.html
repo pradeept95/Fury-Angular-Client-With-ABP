@@ -1,0 +1,79 @@
+<div class="inbox-mail-list" fxLayout="column" fxFlex="grow">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-checkbox></mat-checkbox>
+      <button class="checkbox-menu" type="button" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="content" furyScrollbar>
+    <div class="mail" *ngFor="let mail of mails$ | async" [class.read]="mail.read" [routerLink]="['../mail', mail.id]"
+         fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" matRipple>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" fxFlex="68px">
+        <mat-checkbox class="checkbox" (click)="$event.stopPropagation()"></mat-checkbox>
+        <fury-inbox-mail-star [isStarred]="mail.starred" (starred)="toggleStarred(mail)"
+                              (click)="$event.stopPropagation()"></fury-inbox-mail-star>
+      </div>
+
+      <div class="content-container" fxFlex="auto" fxLayout="column" fxLayout.gt-sm="row">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px" fxFlex="auto" fxFlex.gt-sm="210px">
+          <img class="picture" fxFlex="noshrink" src="http://i.pravatar.cc/30?u={{ mail.from.name }}" fxHide
+               fxShow.gt-sm>
+          <div class="from" fxFlex="grow" fxLayout="row" fxLayoutAlign="space-between center">
+            {{ mail.from.name }}
+            <div class="when" fxHide.gt-sm>{{ mail.when.fromNow() }}</div>
+          </div>
+        </div>
+
+        <div class="content-wrapper" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start center"
+             fxLayoutGap="8px" fxFlex="grow">
+          <div fxLayout="row" fxLayoutGap="8px">
+            <fury-inbox-mail-label *ngFor="let label of mail.labels" [color]="label.color">{{ label.name }}
+            </fury-inbox-mail-label>
+          </div>
+
+          <div class="subject" fxFlex="noshrink">{{ mail.subject }}</div>
+          <div class="middot" fxHide fxShow.gt-sm>&middot;</div>
+          <div class="content">{{ mail.content }}</div>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end center" fxFlex="40px" fxFlex.gt-sm="100px">
+        <span class="when" fxHide fxShow.gt-sm>{{ mail.when.fromNow() }}</span>
+        <button class="options" [matMenuTriggerFor]="mailOptions" mat-icon-button (click)="$event.stopPropagation()">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <span> All </span>
+  </button>
+  <button mat-menu-item>
+    <span> Unread </span>
+  </button>
+  <button mat-menu-item>
+    <span> Read </span>
+  </button>
+</mat-menu>
+
+<mat-menu #mailOptions="matMenu">
+  <button mat-menu-item>
+    <mat-icon>markunread_mailbox</mat-icon>
+    Mark as unread
+  </button>
+  <button mat-menu-item>
+    <mat-icon>label</mat-icon>
+    Labels
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    Delete
+  </button>
+</mat-menu>

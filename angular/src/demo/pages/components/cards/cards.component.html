@@ -1,0 +1,59 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="preview-content" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="24px">
+      <mat-card>
+        <mat-card-header>
+          <img mat-card-avatar src="assets/img/avatars/3.jpg">
+          <mat-card-subtitle>
+            Yesterday
+          </mat-card-subtitle>
+          <mat-card-title>Gerald Morris</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="assets/img/backgrounds/1.jpg">
+        <mat-card-content>
+          <p>Piqued favour stairs it enable exeter as seeing. Remainder met improving but engrossed sincerity age.
+            Better but length gay denied abroad are. Attachment astonished to on appearance imprudence so collecting in
+            excellence. Tiled way blind lived whose new. The for fully had she there leave merit enjoy forth. </p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <div fxLayout="row">
+            <button mat-icon-button>
+              <mat-icon>share</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <span fxFlex></span>
+            <button mat-button>
+              More Info
+            </button>
+            <button mat-button>
+              Save as
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Cards</div>
+      <div class="tag">&lt;mat-card&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          Cards may contain a photo, text, and a link about a single subject. They may display content containing
+          elements of varying size, such as photos with captions of variable length.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="cardHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+

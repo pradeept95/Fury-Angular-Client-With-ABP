@@ -1,0 +1,33 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="title">Preview</div>
+    <div class="preview-content" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px">
+      <mat-slide-toggle [checked]="true"></mat-slide-toggle>
+      <mat-slide-toggle color="primary" [checked]="true"></mat-slide-toggle>
+      <mat-slide-toggle color="accent" [checked]="true"></mat-slide-toggle>
+      <mat-slide-toggle color="warn" [checked]="true"></mat-slide-toggle>
+      <mat-slide-toggle disabled></mat-slide-toggle>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Slide Toggle</div>
+      <div class="tag">&lt;mat-slide-toggle&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          On/off switches toggle the state of a single settings option. The option that the switch controls, as well as
+          the state it’s in, should be made clear from the corresponding inline label. Switches take on the same visual
+          properties of the radio button.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="slideToggleHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+

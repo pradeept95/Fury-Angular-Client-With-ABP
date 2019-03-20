@@ -1,0 +1,35 @@
+<button type="button" mat-icon-button [matMenuTriggerFor]="labelMenu">
+  <mat-icon>{{ icon }}</mat-icon>
+</button>
+
+<mat-menu #labelMenu="matMenu" class="fury-inbox-mail-label-list-menu">
+  <div class="fury-inbox-mail-label-list-menu-subheading" (click)="$event.stopPropagation()">Create Label</div>
+  <form [formGroup]="labelGroup" (submit)="createLabel()" (click)="$event.stopPropagation()">
+    <div class="fury-inbox-mail-label-list-create" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+      <mat-form-field fxFlex="30%" class="fury-inbox-mail-label-list-color">
+        <mat-label>Color</mat-label>
+        <mat-select panelClass="fury-inbox-mail-label-list-color-select" formControlName="color">
+          <mat-option *ngFor="let color of colors$ | async" [value]="color.code">
+            <span class="fury-inbox-mail-label-list-color-select-indicator" [style.background]="color.code"></span>
+            <span>{{ color.name }}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="70%" class="fury-inbox-mail-label-list-name">
+        <mat-label>Label Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <button type="submit" mat-icon-button color="primary" [disabled]="labelGroup.invalid">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form>
+
+  <div class="fury-inbox-mail-label-list-menu-subheading" (click)="$event.stopPropagation()"
+       *ngIf="availableLabels?.length > 0">Use an Existing Label
+  </div>
+  <button *ngFor="let label of availableLabels" mat-menu-item (click)="selectLabelButton($event, label)">
+    <mat-checkbox [checked]="labelSelected(label)" (change)="selectLabel($event, label)"></mat-checkbox>
+    {{ label.name }}
+  </button>
+</mat-menu>

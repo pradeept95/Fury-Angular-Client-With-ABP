@@ -1,0 +1,126 @@
+@import "var";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.inbox-mail {
+
+  .header {
+    height: $inbox-header-height;
+    padding-left: $spacing/3;
+    padding-right: $spacing/3;
+    border-bottom: 1px solid $theme-divider;
+
+    .mat-icon-button, .button {
+      margin-left: $spacing/3;
+      margin-right: $spacing/3;
+      color: $theme-icon;
+    }
+
+    .vertical-divider {
+      width: 1px;
+      height: calc(100% - #{$spacing});
+      background: $theme-divider;
+      margin: $spacing/2 $spacing/3;
+    }
+  }
+
+  .mail-content {
+    ::ng-deep .scroll-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+  }
+
+  .head {
+    padding: $spacing;
+    border-bottom: 1px solid $theme-divider;
+
+    .subject {
+      @include mat-typography-level-to-styles($config, title);
+
+    }
+
+    .labels {
+
+    }
+
+    .actions {
+
+      .mat-icon {
+        color: $theme-icon;
+      }
+    }
+  }
+
+  .info {
+    padding: $spacing;
+
+    .picture {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+    }
+
+    .from {
+      @include mat-typography-level-to-styles($config, subheading-1);
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+
+    }
+
+    .to {
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      color: $theme-secondary-text;
+      @include mat-typography-level-to-styles($config, body-1);
+
+      .mat-icon {
+        color: $theme-icon;
+      }
+    }
+
+    .extra {
+
+      .when {
+        color: $theme-secondary-text;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .options {
+        color: $theme-icon;
+      }
+    }
+  }
+
+  .content {
+    padding: 0 $spacing $spacing;
+  }
+
+  .reply {
+    padding: $spacing;
+    border-top: 1px solid $theme-divider;
+    cursor: pointer;
+
+    .mat-icon {
+      color: $theme-icon;
+    }
+  }
+
+  .replying {
+    padding: $spacing;
+    border-top: 1px solid $theme-divider;
+
+    .actions {
+      margin-top: $spacing;
+    }
+  }
+}

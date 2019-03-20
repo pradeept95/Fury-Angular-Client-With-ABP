@@ -1,0 +1,162 @@
+@import "var";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.inbox-mail-list {
+  max-width: 100%;
+
+  .header {
+    height: $inbox-header-height;
+    min-height: $inbox-header-height;
+    max-height: $inbox-header-height;
+    padding-left: $spacing;
+    padding-right: $spacing;
+    border-bottom: 1px solid $theme-divider;
+
+    .checkbox-menu {
+      color: $theme-icon;
+    }
+  }
+
+  .content {
+
+    .mail {
+      height: $inbox-mail-list-item-height;
+      min-height: $inbox-mail-list-item-height;
+      max-height: $inbox-mail-list-item-height;
+      padding-left: $spacing;
+      padding-right: $spacing;
+      position: relative;
+      border-bottom: 1px solid $theme-divider;
+      transition: $swift-ease-out;
+      cursor: pointer;
+      outline: none;
+      @include mat-typography-level-to-styles($config, body-1);
+
+      @include media-xs {
+        height: auto;
+        max-height: none;
+        padding-top: $spacing/2;
+        padding-bottom: $spacing/2;
+      }
+
+      @include media-sm {
+        height: auto;
+        max-height: none;
+        padding-top: $spacing/2;
+        padding-bottom: $spacing/2;
+      }
+
+      &.read {
+        background: $theme-background-light;
+
+        .from {
+          color: $theme-secondary-text;
+          font-weight: 400;
+        }
+
+        .subject {
+          color: $theme-secondary-text;
+          font-weight: 400;
+        }
+
+        .content {
+          color: $theme-hint-text;
+          font-weight: 400;
+        }
+
+        .when {
+          color: $theme-hint-text;
+          font-weight: 400;
+        }
+      }
+
+      &:hover {
+        background: $theme-background-hover;
+      }
+
+      .checkbox {
+
+      }
+
+      .picture {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background: $theme-app-bar;
+      }
+
+      $content-container-max-width: 68px + 16px + 100px; // Width of First column + layout gap + width of last column
+      $content-container-max-width-sm: 68px + 16px + 40px; // Width of First column + layout gap + width of last column
+      $content-max-width: 210px + 8px; // Width of First column + layout gap + width of last column
+
+      .content-container {
+        max-width: calc(100% - #{$content-container-max-width});
+        position: relative;
+
+        @include media-xs {
+          max-width: calc(100% - #{$content-container-max-width-sm});
+        }
+
+        @include media-sm {
+          max-width: calc(100% - #{$content-container-max-width-sm});
+        }
+      }
+
+      .content-wrapper {
+        max-width: calc(100% - #{$content-max-width});
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+
+        @include media-xs {
+          max-width: none;
+        }
+
+        @include media-sm {
+          max-width: none;
+        }
+      }
+
+      .from {
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        color: $theme-text;
+        font-weight: 500;
+      }
+
+      .subject {
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        color: $theme-text;
+        font-weight: 500;
+      }
+
+      .content {
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        color: $theme-secondary-text;
+        font-weight: 500;
+      }
+
+      .when {
+        color: $theme-secondary-text;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+      }
+
+      .options {
+        color: $theme-icon;
+      }
+    }
+  }
+}

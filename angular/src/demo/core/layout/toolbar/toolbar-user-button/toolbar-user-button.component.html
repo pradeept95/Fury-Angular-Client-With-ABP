@@ -1,0 +1,44 @@
+<div
+  class="user-button"
+  #userButton
+  (furyClickOutside)="onClickOutside()"
+  fxFlex="grow"
+>
+  <button
+    class="button"
+    mat-button
+    (click)="toggleDropdown()"
+    [class.open]="isOpen"
+    fxFlex="grow"
+  >
+    <span fxLayout="row" fxLayoutAlign="start center">
+      <img class="avatar" src="/assets/img/avatars/1.jpg" />
+      <span class="name" fxHide fxShow.gt-sm>David Smith</span>
+      <mat-icon class="icon" fxHide fxShow.gt-sm>keyboard_arrow_down</mat-icon>
+    </span>
+  </button>
+
+  <div class="dropdown elevation" [class.open]="isOpen">
+    <div class="content">
+      <div class="list">
+        <div class="item" matRipple>
+          <mat-icon class="icon">account_circle</mat-icon>
+          <span>Profile</span>
+        </div>
+        <div class="item" matRipple>
+          <mat-icon class="icon">settings</mat-icon>
+          <span>Settings</span>
+        </div>
+        <div class="item" matRipple>
+          <mat-icon class="icon">help</mat-icon>
+          <span>Help</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="item" matRipple (click)="logout()">
+          <mat-icon class="icon">exit_to_app</mat-icon>
+          <span>Logout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

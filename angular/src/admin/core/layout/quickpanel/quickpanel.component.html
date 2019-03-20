@@ -1,0 +1,126 @@
+<mat-tab-group class="quickpanel" fxFlex>
+  <mat-tab label="Overview">
+    <fury-scrollbar class="overflow-container">
+          <div class="text-padding">
+            <p>TODAY</p>
+            <p class="h1">
+              <span>{{ todayDay }}</span> <br/>
+              <span>{{ todayDate }}</span><span style="font-size: 18px; vertical-align: top;">{{ todayDateSuffix }}</span><span>{{ todayMonth }}</span>
+            </p>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <mat-nav-list>
+            <h3 matSubheader>Upcoming Events</h3>
+            <a href="javascript:" mat-list-item>
+              <h4 matLine>Business Meeting</h4>
+              <p matLine>In 16 Minutes, Meeting Room</p>
+            </a>
+            <a href="javascript:" mat-list-item>
+              <h4 matLine>Ask for Vacation</h4>
+              <p matLine>12:00 PM</p>
+            </a>
+            <a href="javascript:" mat-list-item>
+              <h4 matLine>Dinner with Sophie</h4>
+              <p matLine>18:30 PM</p>
+            </a>
+            <a href="javascript:" mat-list-item>
+              <h4 matLine>Deadline for Project X</h4>
+              <p  matLine>21:00 PM</p>
+            </a>
+            <mat-divider></mat-divider>
+            <h3 matSubheader>TODO-List</h3>
+            <a mat-list-item>
+              <h4 matLine>Invite Jack to play golf</h4>
+              <p matLine>Added: 6 hours ago</p>
+            </a>
+            <a mat-list-item>
+              <h4 matLine>Get to know Angular more</h4>
+              <p matLine>Added: 2 days ago</p>
+            </a>
+            <a mat-list-item>
+              <h4 matLine>Configure that new router</h4>
+              <p matLine>Added: 5 days ago</p>
+            </a>
+            <mat-divider></mat-divider>
+            <h3 matSubheader>Server Statistics</h3>
+            <a mat-list-item>
+              <p matLine>CPU Load (71% / 100%)</p>
+              <p matLine><mat-progress-bar mode="determinate" color="primary" value="71"></mat-progress-bar></p>
+            </a>
+            <a mat-list-item>
+              <p matLine>RAM Usage (6,175 MB / 16,384 MB)</p>
+              <p matLine><mat-progress-bar mode="determinate" color="accent" value="34"></mat-progress-bar></p>
+            </a>
+            <a mat-list-item>
+              <p matLine>CPU Temp (43° / 80°)</p>
+              <p matLine><mat-progress-bar mode="determinate" color="warn" value="54"></mat-progress-bar></p>
+            </a>
+          </mat-nav-list>
+    </fury-scrollbar>
+  </mat-tab>
+  <mat-tab label="Notifications">
+    <fury-scrollbar class="overflow-container">
+      <mat-nav-list>
+        <h3 matSubheader>Friends</h3>
+        <a href="javascript:" mat-list-item>
+          <img mat-list-avatar src="../../../../assets/img/avatars/1.jpg">
+          <h3 matLine> Sophie </h3>
+          <p matLine>
+            <span> Dinner? </span>
+            <span class=""> -- Are we still going out tonight? </span>
+          </p>
+        </a>
+        <a href="javascript:" mat-list-item>
+          <img mat-list-avatar src="../../../../assets/img/avatars/4.jpg">
+          <h3 matLine> Jack </h3>
+          <p matLine>
+            <span> Golf weekend </span>
+            <span class=""> -- Hey! You wanted to go play Golf? </span>
+          </p>
+        </a>
+        <a href="javascript:" mat-list-item>
+          <img mat-list-avatar src="../../../../assets/img/avatars/9.jpg">
+          <h3 matLine> Cody </h3>
+          <p matLine>
+            <span> Code Quality </span>
+            <span class=""> -- Love your newest theme, so clean and slick! </span>
+          </p>
+        </a>
+        <a href="javascript:" mat-list-item>
+          <img mat-list-avatar src="../../../../assets/img/avatars/16.jpg">
+          <h3 matLine> James </h3>
+          <p matLine>
+            <span> Gaming? </span>
+            <span class=""> -- You wanna throw a party this weekend? </span>
+          </p>
+        </a>
+        <a href="javascript:" mat-list-item>
+          <img mat-list-avatar src="../../../../assets/img/avatars/19.jpg">
+          <h3 matLine> Jessica </h3>
+          <p matLine>
+            <span> Love you... </span>
+            <span class=""> -- Hope we can see us again soon :) </span>
+          </p>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <h3 matSubheader>Server Statistics</h3>
+        <a mat-list-item>
+          <p matLine>CPU Load (71% / 100%)</p>
+          <p matLine><mat-progress-bar mode="determinate" color="primary" value="71"></mat-progress-bar></p>
+        </a>
+        <a mat-list-item>
+          <p matLine>RAM Usage (6,175 MB / 16,384 MB)</p>
+          <p matLine><mat-progress-bar mode="determinate" color="accent" value="34"></mat-progress-bar></p>
+        </a>
+        <a mat-list-item>
+          <p matLine>CPU Temp (43° / 80°)</p>
+          <p matLine><mat-progress-bar mode="determinate" color="warn" value="54"></mat-progress-bar></p>
+        </a>
+      </mat-nav-list>
+    </fury-scrollbar>
+  </mat-tab>
+</mat-tab-group>

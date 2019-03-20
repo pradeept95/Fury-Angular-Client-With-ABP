@@ -1,0 +1,39 @@
+@import "var";
+
+.icon-list {
+
+  .icon {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    transition: background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+    border-radius: $border-radius;
+
+    @include media-xs {
+      width: 50%;
+    }
+
+    @include media-sm {
+      width: 33%;
+    }
+
+    .mat-icon {
+      font-size: 42px;
+      height: 42px;
+      width: 42px;
+      margin: $spacing $spacing/1.5 $spacing/3;
+      color: $theme-icon;
+    }
+
+    .icon-name {
+      display: block;
+      padding-bottom: $spacing/2;
+
+      @include mat-typography-level-to-styles($config, caption);
+    }
+
+    &:hover {
+      background: $theme-background-hover;
+    }
+  }
+}

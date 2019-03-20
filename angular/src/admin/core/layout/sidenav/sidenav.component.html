@@ -1,0 +1,54 @@
+<div
+  class="sidenav"
+  fxFlex="grow"
+  fxLayout="column"
+  [@sidenavState]="sidenavState$ | async"
+  [class.collapsed]="isCollapsed"
+>
+  <div class="toolbar" fxLayout="row" fxLayoutAlign="start center">
+    <span
+      style="width: 26px; text-align: center; margin-left: -3px;"
+      fxFlexAlign="center"
+      ><img
+        src="/assets/img/icon.png"
+        style="width: 26px; vertical-align: text-top;"
+    /></span>
+
+    <img
+      [routerLink]="['/']"
+      style="height: 35px; margin-left: 26px; margin-bottom: -5px;"
+      src="/assets/img/logo.png"
+      fxFlexAlign="center"
+      class="logo"
+    />
+
+    <span fxFlex><!-- fill space --></span>
+
+    <div fxHide fxShow.gt-md fxFlexAlign="center">
+      <button
+        class="collapse-toggle"
+        *ngIf="!isCollapsedState"
+        mat-icon-button
+        (click)="toggleCollapsed()"
+      >
+        <mat-icon class="icon">radio_button_checked</mat-icon>
+      </button>
+      <button
+        class="collapse-toggle"
+        *ngIf="isCollapsedState"
+        mat-icon-button
+        (click)="toggleCollapsed()"
+      >
+        <mat-icon class="icon">radio_button_unchecked</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <fury-scrollbar class="sidenav-items" fxFlex>
+    <fury-sidenav-item
+      [item]="menuItem"
+      [level]="1"
+      *ngFor="let menuItem of (items$ | async)"
+    ></fury-sidenav-item>
+  </fury-scrollbar>
+</div>

@@ -1,0 +1,50 @@
+@import "var";
+
+[furyScrollbar] > ::ng-deep .scroll-content {
+  max-width: 100%;
+}
+
+.form-wizard {
+  background: url('/assets/img/backgrounds/form-wizard.jpg');
+  background-size: cover;
+  padding: $spacing;
+
+  .card {
+    margin: $spacing;
+    max-width: 100%;
+
+    @include mat-elevation(10);
+
+    .heading {
+      @include mat-typography-level-to-styles($config, title);
+    }
+
+    .subheading {
+      @include mat-typography-level-to-styles($config, subheading-1);
+    }
+
+    .content {
+      margin: $spacing/2 0;
+
+      .checkbox {
+        color: $theme-secondary-text;
+        margin-top: $spacing/2;
+      }
+    }
+
+    .actions {
+      margin-top: $spacing;
+      padding: $spacing $spacing/3 0;
+      border-top: 1px solid $theme-divider;
+    }
+  }
+
+
+}
+
+.copyright {
+  position: absolute;
+  bottom: $spacing;
+  right: $spacing;
+  color: white;
+}

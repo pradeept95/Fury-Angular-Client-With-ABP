@@ -1,0 +1,12 @@
+@import "var";
+
+.avatar-cell {
+  text-align: center;
+  width: 40px;
+  padding-left: $spacing;
+  padding-right: $spacing/3;
+}
+
+.table-container {
+  @include mat-elevation($card-elevation);
+}

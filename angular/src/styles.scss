@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~normalize.css/normalize.css';
+@import '~angular-calendar/scss/angular-calendar.scss';
+@import "~highlight.js/styles/androidstudio.css";
+@import "~quill/dist/quill.snow.css";
+@import "~simplebar/dist/simplebar.css";
+
+@import "styles/var";
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+@import "styles/themes";
+@import "styles/tables";
+@import "styles/cards";
+@import "styles/inbox";
+@import "styles/calendar";
+@import "styles/misc";
+@import "styles/forms";
+@import "styles/tabs";
+@import "styles/utilities";
+
+@keyframes pageLoad {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fury-page-load-animation {
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  animation: pageLoad ease-in-out 1;
+  animation-fill-mode: forwards;
+  animation-duration: 400ms;
+  animation-delay: 600ms;
+  background: $sidenav-background;
+  z-index: 9999;
+  pointer-events: none;
+}

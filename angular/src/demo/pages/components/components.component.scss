@@ -1,0 +1,20 @@
+@import "var";
+
+.components {
+  overflow: hidden;
+  height: 100%;
+}
+
+.navigation {
+  position: relative;
+  padding: $spacing;
+
+  .mat-list-item {
+    position: relative;
+    cursor: pointer;
+  }
+}
+
+.content {
+  padding: $spacing;
+}

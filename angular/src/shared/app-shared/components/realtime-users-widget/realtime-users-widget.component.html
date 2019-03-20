@@ -1,0 +1,25 @@
+<fury-card class="card">
+  <fury-card-header class="header" fxLayout="column">
+    <fury-card-header-title>Active Users right now</fury-card-header-title>
+
+    <div class="value">{{ currentUsers }}</div>
+  </fury-card-header>
+
+  <fury-card-content>
+    <div class="section">
+      <div class="heading">Page views per minute</div>
+      <div class="canvas-content">
+        <canvas #canvas></canvas>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="heading">Top Active Pages</div>
+      <div class="pages" fxLayout="column">
+        <div class="page" *ngFor="let page of pages$ | async">
+          {{ page.page }}
+        </div>
+      </div>
+    </div>
+  </fury-card-content>
+</fury-card>

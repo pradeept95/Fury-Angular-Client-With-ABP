@@ -1,0 +1,51 @@
+<div class="page" fxLayout="column" fxLayoutAlign="center center">
+  <div class="card border-radius elevation">
+    <div class="header padding" fxLayout="column" fxLayoutAlign="center center">
+      <img src="/assets/img/icon.png">
+    </div>
+    <div class="padding" fxLayout="column" fxLayoutGap="16px" [formGroup]="form">
+      <div fxFlex="auto" fxLayout="column">
+        <mat-form-field fxFlex="grow">
+          <mat-label>Name</mat-label>
+          <input matInput required formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="grow">
+          <mat-label>E-Mail</mat-label>
+          <input matInput required formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="grow">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="inputType" formControlName="password" required>
+          <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()" matTooltip="Toggle Visibility">
+            <mat-icon *ngIf="visible">visibility</mat-icon>
+            <mat-icon *ngIf="!visible">visibility_off</mat-icon>
+          </button>
+          <mat-hint>Click the eye to toggle visibility</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="grow">
+          <mat-label>Password (Confirm)</mat-label>
+          <input matInput [type]="inputType" formControlName="passwordConfirm" required>
+          <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()" matTooltip="Toggle Visibility">
+            <mat-icon *ngIf="visible">visibility</mat-icon>
+            <mat-icon *ngIf="!visible">visibility_off</mat-icon>
+          </button>
+          <mat-hint>Please repeat your password from above</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <mat-checkbox class="caption">I accept the <a href="#">terms and conditions.</a></mat-checkbox>
+      </div>
+      <button type="button" color="primary" mat-raised-button (click)="send()">
+        CREATE ACCOUNT
+      </button>
+      <p class="secondary-text text-center">
+        Already have an account?<br/>
+        <a [routerLink]="['/login']">Sign in here</a>
+      </p>
+    </div>
+  </div>
+</div>

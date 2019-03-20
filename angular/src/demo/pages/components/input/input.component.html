@@ -1,0 +1,43 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="title">Preview</div>
+    <div class="preview-content" fxLayout="column">
+      <mat-form-field>
+        <button *ngIf="!visible" type="button" mat-icon-button matPrefix (click)="show()">
+          <mat-icon matPrefix>lock</mat-icon>
+        </button>
+        <button *ngIf="visible" type="button" mat-icon-button matPrefix (click)="hide()">
+          <mat-icon matPrefix>lock_open</mat-icon>
+        </button>
+        <mat-label>Password</mat-label>
+        <input matInput [type]="inputType" value="Hello!">
+        <button *ngIf="!visible" type="button" mat-icon-button matSuffix (click)="show()">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button *ngIf="visible" type="button" mat-icon-button matSuffix (click)="hide()">
+          <mat-icon>visibility_off</mat-icon>
+        </button>
+        <mat-hint>Try clicking the eye or the lock to toggle the visibility.</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Input</div>
+      <div class="tag">&lt;mat-input&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          Text fields typically reside in forms but can appear in other places, like dialog boxes and search.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="inputHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+

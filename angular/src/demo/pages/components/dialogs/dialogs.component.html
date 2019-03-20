@@ -1,0 +1,36 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="title">Preview</div>
+    <div class="preview-content" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px">
+      <button mat-raised-button color="primary" type="button" (click)="openDialog()">OPEN DIALOG</button>
+      <p *ngIf="result">You answered with: {{ result }}</p>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Dialogs</div>
+      <div class="tag">&lt;mat-dialog&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          Dialogs contain text and UI controls. They retain focus until dismissed or a required action has been taken.
+          Use dialogs sparingly because they are interruptive.
+          <br>
+          <br><span class="semi-bold">Some dialog types include:</span>
+          <br><span class="semi-bold">Alerts</span> are urgent interruptions that inform about a situation and require
+          acknowledgement.
+          <br><span class="semi-bold">Simple menus</span> display options for list items, whereas simple dialogs can
+          provide details or actions about a list item.
+          <br><span class="semi-bold">Confirmation dialogs</span> require users to explicitly confirm a choice.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="dialogHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+

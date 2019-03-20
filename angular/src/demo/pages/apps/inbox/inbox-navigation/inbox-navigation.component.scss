@@ -1,0 +1,32 @@
+@import "var";
+
+.navigation {
+  margin-top: $spacing;
+
+  .mat-list-item {
+    cursor: pointer;
+    color: $theme-secondary-text;
+    margin-top: $spacing/3;
+    margin-bottom: $spacing/3;
+    position: relative;
+    outline: none;
+
+    .mat-line {
+      font-weight: 500;
+    }
+
+    &.active {
+      color: $theme-color-primary;
+      background: $theme-background-hover;
+    }
+
+    &:hover {
+      background: $theme-background-hover;
+    }
+  }
+
+  .mat-divider {
+    margin-top: $spacing/3;
+    margin-bottom: $spacing/3;
+  }
+}

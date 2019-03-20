@@ -1,0 +1,118 @@
+﻿<!--
+  <div class="card" id="LoginArea" [@routerTransition]>
+      <div #cardBody class="body">
+          <form #loginForm="ngForm" id="LoginForm" method="post" novalidate (ngSubmit)="login()">
+              <h4 class="text-center">{{l("LogIn")}}</h4>
+
+              <div class="input-group">
+                  <span class="input-group-addon">
+                      <i class="material-icons">person</i>
+                  </span>
+                  <div class="form-line">
+                      <input materialInput [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress" autoFocus class="form-control" type="text" autocomplete="off" placeholder="{{l('UserNameOrEmail')}}" name="userNameOrEmailAddress" required maxlength="255" />
+                  </div>
+              </div>
+
+              <div class="input-group">
+                  <span class="input-group-addon">
+                      <i class="material-icons">lock</i>
+                  </span>
+                  <div class="form-line">
+                      <input materialInput type="password" [(ngModel)]="loginService.authenticateModel.password" class="form-control" name="password" placeholder="{{l('Password')}}" required maxlength="32">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-xs-8 p-t-5">
+                      <input type="checkbox"  [(ngModel)]="loginService.rememberMe" name="rememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
+                      <label for="rememberme">{{l("RememberMe")}}</label>
+                  </div>
+                  <div class="col-xs-4">
+                      <button id="LoginButton" class="btn btn-block bg-pink waves-effect" type="submit">{{l("LogIn")}}</button>
+                  </div>
+              </div>
+
+              <div class="row m-t-15 m-b--20" *ngIf="isSelfRegistrationAllowed">
+                  <div class="col-xs-12">
+                      <a [routerLink]="['../register']">{{l("Register")}}</a>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+-->
+
+<div class="page" fxLayout="column" fxLayoutAlign="center center">
+  <div class="card border-radius elevation" #cardBody>
+    <div class="header padding" fxLayout="column" fxLayoutAlign="center center">
+      <img src="/assets/img/icon.png" />
+    </div>
+    <form
+      class="padding"
+      fxLayout="column"
+      fxLayoutGap="16px"
+      [formGroup]="form"
+      (ngSubmit)="login()"
+    >
+      <div fxFlex="auto" fxLayout="column">
+        <mat-form-field fxFlex="grow">
+          <mat-label>Username or E-Mail</mat-label>
+          <input matInput required formControlName="userNameOrEmailAddress" />
+          <mat-error
+            *ngIf="form.get('userNameOrEmailAddress').hasError('required')"
+            >Email or Username is required</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field fxFlex="grow">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="inputType"
+            formControlName="password"
+            required
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="toggleVisibility()"
+            matTooltip="Toggle Visibility"
+          >
+            <mat-icon *ngIf="visible">visibility</mat-icon>
+            <mat-icon *ngIf="!visible">visibility_off</mat-icon>
+          </button>
+          <!-- <mat-hint>Click the eye to toggle visibility</mat-hint> -->
+          <mat-error *ngIf="form.get('password').hasError('required')"
+            >Password is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-checkbox class="caption" formControlName="rememberme"
+          >Remember Me</mat-checkbox
+        >
+        <a class="caption" [routerLink]="['/account/forgot-password']"
+          >Forgot Password?</a
+        >
+      </div>
+
+      <mat-error
+        class="text-danger text-center"
+        *ngIf="loginService.loginErrorMessage"
+      >
+        <span [innerHTML]="loginService.loginErrorMessage"></span>
+      </mat-error>
+      <button type="submit" color="primary" mat-raised-button>SIGN IN</button>
+      <p class="secondary-text text-center">
+        Don't have an account?<br />
+        <a [routerLink]="['/account/register']">Click here to create one</a>
+      </p>
+    </form>
+  </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.83)"
+  size="large"
+  color="#280f27"
+  type="ball-clip-rotate-pulse"
+></ngx-spinner>

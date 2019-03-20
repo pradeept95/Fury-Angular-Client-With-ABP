@@ -1,0 +1,18 @@
+@import "var";
+
+.mat-elevation-z16 {
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0),
+    0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.fa-caret-down:before {
+  content: "\f07c" !important;
+}
+
+.fa-caret-right:before {
+  content: "\f07b" !important;
+}
+
+.treeview-container .row-item {
+  display: inline-flex !important;
+}

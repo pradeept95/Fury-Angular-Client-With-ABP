@@ -1,0 +1,49 @@
+
+.quickpanel {
+  z-index: 100;
+  width: 330px;
+  min-width: 330px;
+  max-width: 330px;
+  height: 100%;
+}
+
+@media screen and (max-width: 959px) {
+  .quickpanel {
+    width: 80vw;
+    min-width: 80vw;
+    max-width: 80vw;
+  }
+}
+
+.overflow-container {
+  height: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  width: 100%;
+}
+
+.text-padding {
+  padding: 24px;
+}
+
+p {
+  color: #444;
+  margin: 0;
+}
+
+.h1 {
+  font-size: 32px;
+  line-height: 1.3;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h4 {
+  color: #212121;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

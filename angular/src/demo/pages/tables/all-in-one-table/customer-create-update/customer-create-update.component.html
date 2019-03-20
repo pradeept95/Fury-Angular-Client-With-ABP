@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>Customer</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-dialog-content>
+
+    <div class="person">
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex>
+          <mat-label>First Name</mat-label>
+          <input type="text" formControlName="firstName" matInput>
+        </mat-form-field>
+
+        <mat-form-field fxFlex>
+          <mat-label>Last Name</mat-label>
+          <input type="text" formControlName="lastName" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Street</mat-label>
+        <input type="text" formControlName="street" matInput>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Zipcode</mat-label>
+        <input type="text" formControlName="zipcode" matInput>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <mat-label>City</mat-label>
+        <input type="text" formControlName="city" matInput>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Phone Number</mat-label>
+        <input type="text" formControlName="phoneNumber" matInput>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button *ngIf="isCreateMode()" mat-button [disabled]="!form.valid">CREATE CUSTOMER</button>
+    <button *ngIf="isUpdateMode()" mat-button [disabled]="!form.valid">UPDATE CUSTOMER</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,201 @@
+.display-4 {
+  @include mat-typography-level-to-styles($config, display-4);
+}
+
+.display-3 {
+  @include mat-typography-level-to-styles($config, display-3);
+}
+
+.display-2 {
+  @include mat-typography-level-to-styles($config, display-2);
+}
+
+.display-1 {
+  @include mat-typography-level-to-styles($config, display-1);
+}
+
+.headline, h1 {
+  @include mat-typography-level-to-styles($config, headline);
+}
+
+.title, h2 {
+  @include mat-typography-level-to-styles($config, title);
+}
+
+.subheading-2, h3 {
+  @include mat-typography-level-to-styles($config, subheading-2);
+}
+
+.subheading-1, h4 {
+  @include mat-typography-level-to-styles($config, subheading-1);
+}
+
+.body-2 {
+  @include mat-typography-level-to-styles($config, body-2);
+}
+
+.body-1, p, li {
+  @include mat-typography-level-to-styles($config, body-1);
+}
+
+.caption {
+  @include mat-typography-level-to-styles($config, caption);
+}
+
+.display-4, .display-3, .display-2, .display-1, .headline, h1, .title, h2 {
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: $padding-sm 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text {
+  color: $theme-text;
+}
+
+.secondary-text {
+  color: $theme-secondary-text;
+}
+
+.hint-text {
+  color: $theme-hint-text;
+}
+
+.color-icon {
+  color: $theme-icon;
+}
+
+.border-radius {
+  border-radius: $border-radius;
+}
+
+.card {
+  background: $theme-card;
+}
+
+.background {
+  background: $theme-background;
+}
+
+.app-bar {
+  background: $theme-app-bar;
+}
+
+.pointer {
+  cursor: pointer;
+  outline: none;
+}
+
+.vertical-align-super {
+  vertical-align: super;
+}
+
+.elevation {
+  @include mat-elevation($card-elevation);
+}
+
+.relative {
+  position: relative;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.border-radius-round {
+  border-radius: 50%;
+}
+
+.display-block {
+  display: block;
+}
+
+.semi-bold {
+  font-weight: 500;
+}
+
+.margin-horizontal-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-sm {
+  height: 24px;
+  line-height: 24px;
+  width: 24px;
+}
+
+.wrap {
+  white-space: normal;
+}
+
+@each $property in (background, color, border-color) {
+  @each $direction in (primary, accent, warn, primary-contrast, accent-contrast, warn-contrast) {
+    .#{$property}-#{$direction} {
+      @if $direction == primary {
+        #{$property}: $theme-color-primary;
+      }
+      @if $direction == primary-contrast {
+        #{$property}: $theme-color-primary-contrast;
+      }
+      @if $direction == accent {
+        #{$property}: $theme-color-accent;
+      }
+      @if $direction == accent-contrast {
+        #{$property}: $theme-color-accent-contrast;
+      }
+      @if $direction == warn {
+        #{$property}: $theme-color-warn;
+      }
+      @if $direction == warn-contrast {
+        #{$property}: $theme-color-warn-contrast;
+      }
+    }
+  }
+}
+
+@each $property in (border) {
+  @each $direction in ('', -left, -right, -top, -bottom) {
+    .#{$property}#{$direction} {
+      #{$property}#{$direction}: 1px solid $theme-divider;
+    }
+  }
+}
+
+@each $property in (margin, padding) {
+  @each $direction in ('', -left, -right, -top, -bottom, -vertical, -horizontal) {
+    @each $prefix, $value in $paddings {
+
+      @if ($direction == -vertical) {
+        .#{$property}#{$direction}#{$prefix} {
+          #{$property}-top: $value;
+          #{$property}-bottom: $value;
+        }
+      } @else if ($direction == -horizontal) {
+        .#{$property}#{$direction}#{$prefix} {
+          #{$property}-left: $value;
+          #{$property}-right: $value;
+        }
+      } @else {
+        .#{$property}#{$direction}#{$prefix} {
+          #{$property}#{$direction}: $value;
+        }
+      }
+    }
+  }
+}
+
+@each $prefix, $value in $icon-sizes {
+  .mat-icon.icon-size#{$prefix} {
+    height: $value;
+    width: $value;
+    font-size: $value;
+    line-height: $value;
+  }
+}
+

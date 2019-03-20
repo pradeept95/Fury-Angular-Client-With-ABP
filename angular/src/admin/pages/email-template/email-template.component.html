@@ -1,0 +1,121 @@
+<div class="padding">
+  <fury-breadcrumbs current="Email & SMS Templates"></fury-breadcrumbs>
+  <div
+    class="elevation border-radius overflow-hidden route-animations-elements"
+  >
+    <fury-list
+      name="Email & SMS Templates"
+      [columns]="columns"
+      (filterChange)="onFilterChange($event)"
+    >
+      <div class="actions">
+        <button
+          class="create"
+          (click)="refresh()"
+          type="button"
+          mat-mini-fab
+          color="default"
+        >
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </div>
+      <div class="actions">
+        <button
+          class="create"
+          (click)="create()"
+          type="button"
+          mat-mini-fab
+          color="primary"
+          *ngIf="isGranted('BankAdmin.Template.Write')"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <mat-table
+        #table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="sortData($event)"
+      >
+        <!--
+          - Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition"
+        -->
+
+        <!-- key Name Column -->
+        <ng-container *ngFor="let column of columns">
+          <ng-container
+            *ngIf="column.isModelProperty"
+            [matColumnDef]="column.property"
+          >
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ column.name }}</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row">
+              <span class="fury-mobile-label">{{ column.name }}</span>
+              {{ row[column.property] }}
+            </mat-cell>
+          </ng-container>
+        </ng-container>
+
+        <!-- actions Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell
+            class="actions-cell"
+            *matHeaderCellDef
+            mat-sort-header
+          ></mat-header-cell>
+          <mat-cell class="actions-cell" *matCellDef="let row">
+            <span class="fury-mobile-label"></span>
+            <button
+              type="button"
+              mat-icon-button
+              [matMenuTriggerFor]="actionsMenu"
+              (click)="$event.stopPropagation()"
+            >
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+
+            <mat-menu
+              #actionsMenu="matMenu"
+              yPosition="below"
+              xPosition="before"
+            >
+              <button
+                (click)="update(row)"
+                mat-menu-item
+                *ngIf="isGranted('BankAdmin.Template.Modify')"
+              >
+                <span>Modify</span>
+              </button>
+              <button
+                (click)="delete(row)"
+                mat-menu-item
+                *ngIf="isGranted('BankAdmin.Template.Delete')"
+              >
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="visibleColumns"></mat-header-row>
+
+        <mat-row
+          *matRowDef="let row; columns: visibleColumns"
+          class="clickable route-animations-elements"
+        ></mat-row>
+      </mat-table>
+
+      <mat-paginator
+        class="paginator"
+        [length]="totalItems"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        [showFirstLastButtons]="true"
+        (page)="changePageSize($event)"
+      ></mat-paginator>
+    </fury-list>
+  </div>
+</div>

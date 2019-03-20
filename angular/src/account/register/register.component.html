@@ -1,0 +1,265 @@
+﻿<div class="page" fxLayout="column" fxLayoutAlign="center center">
+  <div class="card border-radius elevation" #cardBody>
+    <div class="header padding" fxLayout="column" fxLayoutAlign="center center">
+      <img src="/assets/img/icon.png" />
+    </div>
+    <mat-horizontal-stepper #stepper="matHorizontalStepper" [linear]="isLinear">
+      <mat-step
+        [stepControl]="accountFormGroup"
+        [completed]="isRegistrationCompleted"
+        [editable]="isRegisterEditable"
+        [optional]="isRegisterOptional"
+      >
+        <form [formGroup]="accountFormGroup" (ngSubmit)="registerUser(stepper)">
+          <ng-template matStepLabel>Create Account</ng-template>
+
+          <div class="heading">Create Account</div>
+          <div class="subheading">
+            Set up your account for testing purposes.
+          </div>
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <div
+              fxLayout="column"
+              fxLayoutGap="8px"
+              fxLayout.gt-xs="row"
+              fxLayoutGap.gt-xs="24px"
+            >
+              <mat-form-field fxFlex="1 1 auto">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" required />
+              </mat-form-field>
+              <mat-form-field fxFlex="1 1 auto">
+                <mat-label>Middle Name</mat-label>
+                <input matInput formControlName="middleName" />
+              </mat-form-field>
+              <mat-form-field fxFlex="1 1 auto">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" required />
+              </mat-form-field>
+            </div>
+
+            <mat-form-field>
+              <mat-label>Email Address</mat-label>
+              <input matInput formControlName="emailAddress" required />
+            </mat-form-field>
+
+            <mat-form-field fxFlex="grow">
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phoneNumber" required />
+              <mat-hint>This will be your unique login name.</mat-hint>
+            </mat-form-field>
+
+            <!--
+              <ngx-recaptcha2
+                #captchaElem
+                [siteKey]="siteKey"
+                (reset)="handleReset()"
+                (expire)="handleExpire()"
+                (load)="handleLoad()"
+                (success)="handleSuccess($event)"
+                [useGlobalDomain]="false"
+                [size]="size"
+                [hl]="lang"
+                [theme]="theme"
+                [type]="type"
+                formControlName="recaptcha"
+              >
+              </ngx-recaptcha2>
+            -->
+            <p class="secondary-text">
+              Did you know your credentials?<br />
+              <a [routerLink]="['/account/login']">Click here to login</a>
+            </p>
+            <div
+              class="actions"
+              fxLayout="row"
+              fxLayoutAlign="end center"
+              fxLayoutGap="8px"
+            >
+              <button
+                mat-button
+                type="button"
+                (click)="accountFormGroup.reset()"
+                [disabled]="accountFormGroup.pristine"
+                color="primary"
+              >
+                RESET
+              </button>
+              <button
+                mat-raised-button
+                type="submit"
+                color="primary"
+                [disabled]="accountFormGroup.invalid"
+              >
+                NEXT
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step
+        [stepControl]="confirmFormGroup"
+        [completed]="isVerificationCompleted"
+        [editable]="isVerificationEditable"
+        [optional]="isVerificationOptional"
+      >
+        <form [formGroup]="confirmFormGroup" (ngSubmit)="verifyUser(stepper)">
+          <ng-template matStepLabel>Confirm Creation</ng-template>
+
+          <div class="heading">You need to verify.</div>
+          <div class="subheading">
+            Please check your email to find the verification code.
+          </div>
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <mat-form-field>
+              <mat-label>Verification Code</mat-label>
+              <input matInput formControlName="verificationCode" required />
+              <mat-hint>Please check your email or sms for the code.</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="actions"
+            fxLayout="row"
+            fxLayoutAlign="end center"
+            fxLayoutGap="8px"
+          >
+            <button
+              mat-button
+              type="button"
+              (click)="resetVerifyUser()"
+              [disabled]="accountFormGroup.pristine"
+              color="primary"
+            >
+              RESET
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="confirmFormGroup.invalid"
+            >
+              VERIFY CREATION
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step
+        [stepControl]="passwordFormGroup"
+        [completed]="isCreatePasswordCompleted"
+        [editable]="isCreatePasswordEditable"
+        [optional]="isCreatePasswordOptional"
+      >
+        <form
+          [formGroup]="passwordFormGroup"
+          (ngSubmit)="registerPassword(stepper)"
+        >
+          <ng-template matStepLabel>Select a Password</ng-template>
+
+          <div class="heading">Select a Password</div>
+          <div class="subheading">
+            Enter your password you will use to log in.
+          </div>
+
+          <div class="content" fxLayout="column" fxLayoutGap="8px">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                [type]="passwordInputType"
+                formControlName="newPassword"
+                required
+              />
+              <button
+                *ngIf="passwordInputType === 'password'"
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="showPassword()"
+              >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button
+                *ngIf="passwordInputType === 'text'"
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="hidePassword()"
+              >
+                <mat-icon>visibility_off</mat-icon>
+              </button>
+              <mat-hint
+                >Your password should be atleast 6 characters long.</mat-hint
+              >
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Confirm Password</mat-label>
+              <input
+                matInput
+                [type]="passwordInputType"
+                formControlName="confirmPassword"
+                required
+              />
+              <button
+                *ngIf="passwordInputType === 'password'"
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="showPassword()"
+              >
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button
+                *ngIf="passwordInputType === 'text'"
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="hidePassword()"
+              >
+                <mat-icon>visibility_off</mat-icon>
+              </button>
+              <mat-hint>Please type in your password again.</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="actions"
+            fxLayout="row"
+            fxLayoutAlign="end center"
+            fxLayoutGap="8px"
+          >
+            <button
+              mat-button
+              type="button"
+              (click)="resetCreatePassword()"
+              [disabled]="passwordFormGroup.pristine"
+              color="primary"
+            >
+              RESET
+            </button>
+            <button
+              mat-raised-button
+              type="submit"
+              color="primary"
+              [disabled]="passwordFormGroup.invalid"
+            >
+              CREATE PASSWORD AND CONTINUE
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <mat-error *ngIf="globlaErrorMessage">
+      <span [innerHTML]="globlaErrorMessage"></span>
+    </mat-error>
+  </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.83)"
+  size="large"
+  color="#280f27"
+  type="ball-clip-rotate-pulse"
+></ngx-spinner>

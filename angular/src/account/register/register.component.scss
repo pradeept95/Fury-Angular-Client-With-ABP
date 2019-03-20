@@ -1,0 +1,78 @@
+@import "var";
+
+.page {
+  display: block;
+  background: linear-gradient(
+      135deg,
+      $theme-background 22px,
+      $theme-background-hover 22px,
+      $theme-background-hover 24px,
+      transparent 24px,
+      transparent 67px,
+      $theme-background-hover 67px,
+      $theme-background-hover 69px,
+      transparent 69px
+    ),
+    linear-gradient(
+        225deg,
+        $theme-background 22px,
+        $theme-background-hover 22px,
+        $theme-background-hover 24px,
+        transparent 24px,
+        transparent 67px,
+        $theme-background-hover 67px,
+        $theme-background-hover 69px,
+        transparent 69px
+      )
+      0 64px;
+  background-color: $theme-background;
+  background-size: 64px 128px;
+  height: 100%;
+  width: 100%;
+}
+.card {
+  width: 60%;
+  @include media-xs {
+    width: 60%;
+  }
+  .header {
+    background: $theme-color-primary;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+}
+[furyScrollbar] > ::ng-deep .scroll-content {
+  max-width: 100%;
+}
+.form-wizard {
+  padding: $spacing;
+  .card {
+    margin: $spacing;
+    max-width: 100%;
+    @include mat-elevation(10);
+    .heading {
+      @include mat-typography-level-to-styles($config, title);
+    }
+    .subheading {
+      @include mat-typography-level-to-styles($config, subheading-1);
+    }
+    .content {
+      margin: $spacing/2 0;
+      .checkbox {
+        color: $theme-secondary-text;
+        margin-top: $spacing/2;
+      }
+    }
+    .actions {
+      margin-top: $spacing;
+      padding: $spacing $spacing/3 0;
+      border-top: 1px solid $theme-divider;
+    }
+  }
+}
+.copyright {
+  position: absolute;
+  bottom: $spacing;
+  right: $spacing;
+  color: white;
+}

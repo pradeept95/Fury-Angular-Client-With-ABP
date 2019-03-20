@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SunriseBank.Application.Common\SunriseBank.Application.Common.csproj" />
+    <ProjectReference Include="..\SunriseBank.Core\SunriseBank.Core.csproj" />
+  </ItemGroup>
+
+</Project>

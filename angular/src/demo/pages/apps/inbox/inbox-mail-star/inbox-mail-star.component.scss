@@ -1,0 +1,9 @@
+@import "var";
+
+.star {
+  color: $theme-icon;
+
+  &.active {
+    color: $inbox-star-color;
+  }
+}

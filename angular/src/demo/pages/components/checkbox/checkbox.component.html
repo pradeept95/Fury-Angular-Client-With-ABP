@@ -1,0 +1,35 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="title">Preview</div>
+    <div class="preview-content" fxLayout="column" fxLayoutGap="12px">
+      <mat-checkbox>Checkbox</mat-checkbox>
+      <mat-checkbox color="primary" [checked]="true">Primary</mat-checkbox>
+      <mat-checkbox color="accent" [checked]="true">Accent</mat-checkbox>
+      <mat-checkbox color="warn" [checked]="true">Warn</mat-checkbox>
+      <mat-checkbox disabled [checked]="true">Disabled</mat-checkbox>
+      <mat-checkbox [indeterminate]="true">Indeterminate</mat-checkbox>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Checkbox</div>
+      <div class="tag">&lt;mat-checkbox&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          Checkboxes allow the user to select multiple options from a set.
+          <br>If you have multiple options appearing in a list, you can preserve space by using checkboxes instead of
+          on/off switches.
+          <br>If you have a single option, avoid using a checkbox and use an on/off switch instead.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="checkboxHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+

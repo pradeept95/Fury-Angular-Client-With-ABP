@@ -1,0 +1,34 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="preview-content">
+      <mat-grid-list fxFlex cols="4" rowHeight="100px">
+        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+                       [style.background]="tile.color">
+          {{ tile.text }}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Grid List</div>
+      <div class="tag">&lt;mat-grid-list&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          A grid list consists of a repeated pattern of cells arrayed in a vertical and horizontal layout.
+          <br>
+          <br>Grid lists are best used on similar data types. They help improve the visual comprehension of the content
+          they contain.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="gridListHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+

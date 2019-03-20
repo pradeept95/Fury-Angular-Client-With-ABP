@@ -1,0 +1,43 @@
+<fury-loading-indicator></fury-loading-indicator>
+
+<mat-drawer-container class="layout-container">
+
+  <!-- QUICKPANEL -->
+  <mat-drawer position="end" mode="over" #quickpanel>
+    <fury-quickpanel></fury-quickpanel>
+  </mat-drawer>
+  <!-- END QUICKPANEL -->
+
+  <mat-drawer-content class="drawer-content">
+    <fury-backdrop></fury-backdrop>
+
+    <div class="wrapper" fxFlex="grow" fxLayout="row">
+
+      <!-- SIDENAV -->
+      <fury-sidenav class="sidenav" fxFlex="none"></fury-sidenav>
+      <!-- END SIDENAV -->
+
+      <div class="content-wrapper" fxFlex fxLayout="column">
+        <!-- TOOLBAR -->
+        <fury-toolbar fxFlex="none" [quickpanel]="quickpanel"></fury-toolbar>
+        <!-- END TOOLBAR -->
+
+        <!-- CONTENT -->
+        <div class="main-container"
+             #scrollContainer
+             [@routeAnimations]="o.isActivated && o.activatedRoute.snapshot.url"
+             fxFlex>
+          <router-outlet (activate)="onActivate($event, scrollContainer, o)" #o="outlet"></router-outlet>
+        </div>
+        <!-- END CONTENT -->
+
+        <!-- FOOTER -->
+        <fury-footer fxFlex="none"></fury-footer>
+        <!-- END FOOTER -->
+      </div>
+
+    </div>
+  </mat-drawer-content>
+
+
+</mat-drawer-container>

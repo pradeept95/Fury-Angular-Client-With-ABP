@@ -1,0 +1,37 @@
+<div class="padding" fxLayout="column">
+
+  <fury-breadcrumbs current="Material Icons"></fury-breadcrumbs>
+
+  <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="24px">
+    <div fxFlex="auto" fxFlex.gt-md="250px">
+      Icons are a neat way to add some image to text-only lists.
+      <br>
+      <br>Fury comes with a great variety of icons from the official Material Icons font and using them can't be
+      simpler.
+    </div>
+
+    <fury-card>
+      <fury-card-header>
+        <fury-card-header-title>Icon Preview</fury-card-header-title>
+        <fury-card-header-sub-title>Hundreds of icons ready to be used.</fury-card-header-sub-title>
+      </fury-card-header>
+
+      <fury-card-content fxLayout="column">
+        <mat-form-field fxFlex="noshrink" floatPlaceholder="never">
+          <mat-label>Search&hellip;</mat-label>
+          <input matInput [formControl]="iconCtrl">
+        </mat-form-field>
+
+        <div class="icon-list" furyScrollbar fxFlex="grow">
+          <div class="icon" *ngFor="let icon of filteredIcons$ | async">
+            <mat-icon>{{ icon }}</mat-icon>
+            <div class="icon-name">{{ icon }}</div>
+          </div>
+        </div>
+      </fury-card-content>
+
+    </fury-card>
+  </div>
+
+
+</div>

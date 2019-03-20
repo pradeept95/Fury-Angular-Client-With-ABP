@@ -1,0 +1,33 @@
+<h3 matDialogTitle>
+  {{ event.title }}
+</h3>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <div fxLayout="column">
+      <mat-form-field fxFlex="auto">
+        <mat-label>Event Name</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="auto">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startDatepicker" formControlName="start">
+        <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatepicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="auto">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endDatepicker" formControlName="end">
+        <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+  <button matDialogClose mat-button>CANCEL</button>
+  <button class="save" mat-raised-button color="primary" (click)="save()">SAVE</button>
+</mat-dialog-actions>

@@ -1,0 +1,38 @@
+<div class="page" fxLayout="column" fxLayoutAlign="center center">
+  <div class="card border-radius elevation">
+    <div class="header padding" fxLayout="column" fxLayoutAlign="center center">
+      <img src="/assets/img/icon.png">
+    </div>
+    <div class="padding" fxLayout="column" fxLayoutGap="16px" [formGroup]="form">
+      <div fxFlex="auto" fxLayout="column">
+        <mat-form-field fxFlex="grow">
+          <mat-label>E-Mail</mat-label>
+          <input matInput required formControlName="email">
+          <mat-error *ngIf="form.get('email').hasError('required')">We need an email address to log you in</mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="grow">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="inputType" formControlName="password" required>
+          <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()" matTooltip="Toggle Visibility">
+            <mat-icon *ngIf="visible">visibility</mat-icon>
+            <mat-icon *ngIf="!visible">visibility_off</mat-icon>
+          </button>
+          <mat-hint>Click the eye to toggle visibility</mat-hint>
+          <mat-error *ngIf="form.get('password').hasError('required')">We need a password to log you in</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-checkbox class="caption">Remember Me</mat-checkbox>
+        <a class="caption" [routerLink]="['/forgot-password']">Forgot Password?</a>
+      </div>
+      <button type="button" color="primary" mat-raised-button (click)="send()">
+        SIGN IN
+      </button>
+      <p class="secondary-text text-center">
+        Don't have an account?<br/>
+        <a [routerLink]="['/register']">Click here to create one</a>
+      </p>
+    </div>
+  </div>
+</div>

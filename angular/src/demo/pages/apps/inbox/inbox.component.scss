@@ -1,0 +1,114 @@
+@import "var";
+
+$inbox-navigation-width-collapsed: 116px;
+$inbox-navigation-width: 250px;
+
+.inbox {
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+
+  .drawer-navigation {
+    padding: 0 $spacing;
+    overflow: hidden;
+  }
+
+  .header {
+    padding: $spacing*2 $spacing ($spacing*2)+$inbox-header-height 0;
+    background: $theme-color-accent url('/assets/img/backgrounds/inbox.png');
+    background-size: cover;
+    z-index: 10;
+
+    @include mat-elevation($card-elevation);
+
+    @include media-xs {
+      padding: $spacing/3 $spacing/3 $spacing/3+$inbox-header-height;
+    }
+
+    .logo {
+      color: white;
+      padding-left: $spacing;
+      @include mat-typography-level-to-styles($config, display-1);
+
+      .mat-icon {
+        padding-right: $spacing/2;
+      }
+
+      @include media-sm {
+        padding-left: 0;
+
+        .mat-icon {
+          padding-right: 0;
+        }
+      }
+
+      @include media-xs {
+        padding-left: 0;
+        margin-bottom: $spacing/3;
+      }
+    }
+
+    .search-bar {
+      background: white;
+      border-radius: $border-radius;
+      overflow: hidden;
+
+      @include mat-elevation($card-elevation);
+
+      .mat-icon {
+        vertical-align: middle;
+        margin-right: 14px;
+        margin-left: 16px;
+      }
+
+      .search {
+        border: 0;
+        height: $inbox-searchbar-height;
+        outline: none;
+      }
+    }
+  }
+
+  .page-container {
+    margin-top: -$inbox-header-height;
+    background: $theme-background;
+  }
+
+  .navigation-container {
+    padding: 0 $spacing $spacing;
+    z-index: 20;
+
+    .compose {
+      height: $inbox-header-height;
+
+      .icon {
+        margin-left: -$spacing;
+        padding-right: $spacing/3;
+      }
+    }
+  }
+
+  .content {
+    background: $theme-card;
+    @include mat-elevation($card-elevation);
+    margin-right: $spacing;
+    margin-bottom: $spacing;
+    border-radius: $border-radius;
+    max-width: calc(100% - #{$inbox-navigation-width + $spacing});
+    z-index: 20;
+
+    @include media-xs {
+      margin: 0 $spacing/3 $spacing/3;
+      max-width: calc(100% - #{$spacing/3 * 2});
+    }
+
+    @include media-sm {
+      max-width: calc(100% - #{$inbox-navigation-width-collapsed + $spacing});
+    }
+  }
+}
+

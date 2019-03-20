@@ -1,0 +1,24 @@
+<div class="toolbar" fxLayout="row" fxLayoutAlign="space-between">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <fury-toolbar-sidenav-mobile-toggle></fury-toolbar-sidenav-mobile-toggle>
+
+    <img class="logo" [routerLink]="['/']" fxHide.gt-md fxHide.xs
+         style="height: 35px; margin-left: 24px; margin-bottom: -5px;"
+         src="../../../../assets/img/logo_dark.png">
+
+    <fury-toolbar-search-bar fxFlex="500px" fxHide fxShow.gt-md></fury-toolbar-search-bar>
+  </div>
+
+  <div fxLayout="row">
+
+    <fury-toolbar-fullscreen-toggle class="button"></fury-toolbar-fullscreen-toggle>
+
+    <fury-toolbar-search class="button"></fury-toolbar-search>
+
+    <fury-toolbar-notifications class="button"></fury-toolbar-notifications>
+
+    <fury-toolbar-user-button class="button"></fury-toolbar-user-button>
+
+    <fury-toolbar-quickpanel-toggle class="button" [quickpanel]="quickpanel"></fury-toolbar-quickpanel-toggle>
+  </div>
+</div>

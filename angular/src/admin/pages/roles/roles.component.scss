@@ -1,0 +1,11 @@
+@import "var";
+
+.clickable {
+  cursor: pointer;
+}
+
+.image-cell {
+  img {
+    background: $theme-app-bar;
+  }
+}

@@ -1,0 +1,80 @@
+@import "var";
+
+.fury-card {
+  background: white;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  max-width: 100%;
+
+  @include mat-elevation($card-elevation);
+}
+
+.fury-card-header {
+  padding: $spacing;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  //border-bottom: 1px solid $theme-divider;
+  //background: $theme-app-bar;
+
+  .fury-card-header-title-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: $spacing;
+
+    .fury-card-header-title {
+      white-space: nowrap;
+      @include mat-typography-level-to-styles($config, subheading-1);
+
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+    }
+
+    .fury-card-header-sub-title {
+      white-space: nowrap;
+      font-size: 13px;
+      color: $theme-secondary-text;
+      @include mat-typography-level-to-styles($config, body-1);
+    }
+  }
+
+  .fury-card-header-actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    color: $theme-icon;
+  }
+}
+
+.fury-card-content {
+  padding: 0 $spacing $spacing;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.fury-card-actions {
+  padding: $spacing/3 $spacing/1.5;
+  border-top: 1px solid $theme-divider;
+  display: flex;
+  flex-direction: row;
+
+  button + button {
+    margin-left: $spacing/3;
+  }
+
+  &.fury-card-actions-align-end {
+    justify-content: flex-end;
+  }
+}

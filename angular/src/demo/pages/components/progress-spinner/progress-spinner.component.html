@@ -1,0 +1,32 @@
+<div class="preview-card" fxLayout="column" fxLayout.gt-sm="row">
+  <div class="preview">
+    <div class="title">Preview</div>
+    <div class="preview-content" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="24px">
+      <mat-progress-spinner mode="determinate" [value]="80"></mat-progress-spinner>
+      <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+    </div>
+  </div>
+
+  <div class="content" fxFlex>
+    <div class="header">
+      <div class="title">Progress Spinner</div>
+      <div class="tag">&lt;mat-progress-spinner&gt;</div>
+    </div>
+
+    <mat-tab-group class="tabs fury-tabs">
+      <mat-tab label="DESCRIPTION">
+        <p class="tab-content">
+          A single visual indicator should be used to represent each type of operation. For example, a refresh operation
+          should display either a refresh bar or an activity circle, but not both.
+          <br>
+          <br>Determinate indicators display how long an operation will take.
+          <br>Indeterminate indicators visualize an unspecified wait time.
+        </p>
+      </mat-tab>
+      <mat-tab label="SOURCE CODE">
+        <code furyHighlight [innerHTML]="progressSpinnerHTML"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
